@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header border-transparent">
+    <h3 class="card-title mt-2">Category Table</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+        Add New Category
+      </button>
+    </div>
+  </div>
+  
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table m-0" id="dataTable">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Category Name</th>
+          <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(let i=0; i < category.length; i++){ %>
+          <tr>
+            <td class="text-center"><%= i + 1 %></td>
+            <td class="text-center"><%= category[i].name  %></td>
+            <td class="text-center">
+              <form action="/admin/category/<%= category[i].id %>?_method=delete" method="POST">
+                <a href="javascript:void()" type="button" class="btn btn-warning button-edit" data-id="<%= category[i].id %>" data-name="<%= category[i].name %>">Edit</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer clearfix"></div>
+</div>

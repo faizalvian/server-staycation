@@ -1,0 +1,32 @@
+<%- include('../../partials/header.ejs') %>
+<div class="wrapper">
+  <%- include('../../partials/navbar.ejs') %>
+  <%- include('../../partials/sidebar.ejs') %>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1></h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <%- include('../category/table_category') %>
+    </section>
+  </div>
+  <%- include('../category/add_modal') %>
+  <%- include('../category/edit_modal') %>
+  <%- include('../../partials/footer') %>
+
+  <script>
+    $("#dataTable").on("click", ".button-edit", function(){
+      let id = $(this).data('id')
+      let name = $(this).data('name')
+      $("#edit-modal").modal("show")
+      $('.id').val(id)
+      $('.name').val(name)
+    })
+  </script>
